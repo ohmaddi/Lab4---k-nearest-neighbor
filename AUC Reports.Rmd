@@ -1,0 +1,38 @@
+---
+title: "AUC Reports"
+author: "Kivalina Grove & Ouafaa Hmaddi"
+date: "11/4/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidymodels)
+```
+
+## Lab 4
+
+Part 2: Preliminary Run
+```{r part2}
+part2 <- readRDS(here::here("models", "part2.Rds"))
+show_best(part2, metric = "roc_auc") %>%
+  knitr::kable()
+```
+
+Part 4: Model Tuning
+```{r part4}
+part4 <- readRDS(here::here("models", "part4.Rds")) 
+show_best(part4, metric = "roc_auc", n = 5) %>%
+  knitr::kable()
+```
+
+Part 5: Final Fit
+```{r}
+part5 <- readRDS(here::here("models", "part5.Rds")) 
+collect_metrics(part5) %>%
+  knitr::kable()
+```
+
+
+
